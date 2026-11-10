@@ -20,9 +20,10 @@
   <body>
     <main>
       <div class="product">
-        <div class="product__img">
-          <img src="assets/image-product-desktop.jpg" />
-        </div>
+        <picture class="product__img">
+          <source srcset="assets/image-product-desktop.jpg" media="(min-width: 600px)">
+          <img src="assets/image-product-mobile.jpg" />
+        </picture>
 
         <div class="product__content">
           <p>PERFUME</p>

@@ -1,112 +1,167 @@
 :root {
-    --clr-primary-500: hsl(158, 36%, 37%);
-    --clr-primary-700: hsl(158, 42%, 18%);
-    --clr-neutral-black: hsl(212, 21%, 14%);
-    --clr-neutral-grey: hsl(228, 12%, 48%);
-    --clr-neutral-cream: hsl(30, 38%, 92%);
-    --clr-neutral-white: hsl(0, 0%, 100%);
+  --clr-primary-500: hsl(158, 36%, 37%);
+  --clr-primary-700: hsl(158, 42%, 18%);
+  --clr-neutral-black: hsl(212, 21%, 14%);
+  --clr-neutral-grey: hsl(228, 12%, 48%);
+  --clr-neutral-cream: hsl(30, 38%, 92%);
+  --clr-neutral-white: hsl(0, 0%, 100%);
 
-    --ff--Montserrat: "Montserrat", sans-serif;
-    --ff-Fraunces: "Fraunces", serif;
+  --ff--Montserrat: "Montserrat", sans-serif;
+  --ff-Fraunces: "Fraunces", serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+*:not(dialog) {
+  margin: 0;
+}
+
+/* 3. Enable keyword animations */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    interpolate-size: allow-keywords;
+  }
 }
 
 body {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    background-color: var(--clr-neutral-cream);
+  /* 4. Increase line-height */
+  line-height: 1.5;
+  /* 5. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 6. Improve media defaults */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 7. Inherit fonts for form controls */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* 8. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* 9. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+  text-wrap: balance;
+}
+
+/*
+  10. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--clr-neutral-cream);
 }
 
 .product {
-    display: flex;
-    max-width: 600px;
-    background-color: var(--clr-neutral-white);
-    border-radius: 10px;
-    overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-neutral-white);
+  border-radius: 10px;
+  overflow: hidden;
 }
 
-.product__img {
-    max-width: 300px;
+@media (min-width: 600px) {
+  .product {
+    max-width: 600px;
+    flex-direction: row;
+  }
+
+  .product__img {
     flex: 1;
     flex-basis: 50%;
+  }
+
+  .product__content {
+    flex: 1;
+    flex-basis: 50%;
+  }
 }
 
 .product__img img {
-    display: block;
-    height: 100%;
-    width: 100%;
-    object-fit: contain;
+  object-fit: contain;
 }
 
 .product__content {
-    padding: 30px;
-    flex: 1;
-    flex-basis: 50%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .product__content > p:first-child {
-    font-family: var(--ff--Montserrat);
-    color: var(--clr-neutral-black);
-    font-size: 14px;
-    letter-spacing: 5px;
-}   
+  font-family: var(--ff--Montserrat);
+  color: var(--clr-neutral-black);
+  font-size: 14px;
+  letter-spacing: 5px;
+}
 
 .product__content h1 {
-    font-family: var(--ff-Fraunces);
-    line-height: 32px;
-    color: var(--clr-neutral-black);
+  font-family: var(--ff-Fraunces);
+  line-height: 32px;
+  color: var(--clr-neutral-black);
 }
 
 .product__content > p:nth-of-type(2) {
-    color: var(--clr-neutral-grey);
-    font-family: var(--ff--Montserrat);
-    font-size: 14px;
+  color: var(--clr-neutral-grey);
+  font-family: var(--ff--Montserrat);
+  font-size: 14px;
 }
 
 .flex-group {
-    display: flex;
-    align-items: center;
-    gap: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
 .product__price {
-    font-family: var(--ff-Fraunces);
-    font-size: 32px;
-    color: var(--clr-primary-500);
-    font-weight: bold;
+  font-family: var(--ff-Fraunces);
+  font-size: 32px;
+  color: var(--clr-primary-500);
+  font-weight: bold;
 }
 
 .product__original-price {
-    font-family: var(--ff--Montserrat);
-    color: var(--clr-neutral-grey);
-    font-size: 14px;
-    text-decoration: line-through;
+  font-family: var(--ff--Montserrat);
+  color: var(--clr-neutral-grey);
+  font-size: 14px;
+  text-decoration: line-through;
 }
 
 .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    padding: 15px 20px;
-    border-radius: 10px;
-    background-color: var(--clr-primary-500);
-    color: var(--clr-neutral-white);
-    border: none;
-    font-weight: bold;
-    font-family: var(--ff--Montserrat);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 10px;
+  background-color: var(--clr-primary-500);
+  color: var(--clr-neutral-white);
+  border: none;
+  font-weight: bold;
+  font-family: var(--ff--Montserrat);
 }
 
 .button:hover {
-    background-color: var(--clr-primary-700);
+  background-color: var(--clr-primary-700);
 }
